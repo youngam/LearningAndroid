@@ -22,8 +22,74 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="css/creative.css" rel="stylesheet">
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+
+    <script>
+
+        //update this with your $form selector
+        $( window ).load(function() {
+          var form_id = "email_form";
+
+          var data = {
+              "access_token": "zez130jpn7v62gpfwbyqz6se" // sent after you sign up
+          };
+
+          function onSuccess() {
+              // remove this to avoid redirect
+              console.log("onSuccess");
+              sendButton.prop('disabled',false);
+          }
+
+          function onError(error) {
+              // remove this to avoid redirect
+              console.log("onError")
+              sendButton.prop('disabled',false);
+          }
+
+          var sendButton = $("#" + form_id + " [name='send']");
+
+          function send() {
+              sendButton.prop('disabled',true);
+
+              var subject = "PractiseAndroid new client";
+              var message = $("#" + form_id + " [name='clientEmail']").val();
+              data['subject'] = subject;
+              data['text'] = message;
+
+              $.post('https://postmail.invotes.com/send',
+                  data,
+                  onSuccess
+              ).fail(onError);
+
+              return false;
+          }
+
+          sendButton.on('click', send);
+
+          var $form = $("#" + form_id);
+          $form.submit(function( event ) {
+              event.preventDefault();
+          });
+        });  
+    </script>
   </head>
 
   <body id="page-top">
@@ -53,8 +119,18 @@
         <div class="header-content-inner">
           <h1 id="homeHeading">Learn Android from scratch creating twitter client</h1>
           <hr>
-          <p>Start learning android practising. Minimum theory maximum practise skills!</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          <p>Start learning android practising. Minimum theory maximum practise skills. Register for courses right now.
+              This part is absolutely free. After finishing them you will be able to write client for popular api like 
+              vk, facebook, instagram.
+          </p>
+          <div>
+            <form id="email_form">
+                <div class="center-vertically">
+                  <input type="text" class="email" name="clientEmail" placeholder="Enter your email" />
+                  <input type="submit" class="btn btn-primary btn-xl js-scroll-trigger" name="send" value="Register" />
+                </div>
+            </form>
+          </div>
         </div>
       </div>
     </header>
@@ -206,7 +282,7 @@
         	  <div class="col-lg-4 mr-auto text-center ">
         	    <i class="fa fa-envelope-o fa-3x text-white sr-contact"></i>
         	    <p>
-        	      <a class ="text-white"href="mailto:your-email@your-domain.com">	feedback@startbootstrap.com</a>	
+        	      <a class="text-white"href="mailto:your-email@your-domain.com">	feedback@startbootstrap.com</a>	
         	    </p>	
         	  </div>
         	</div>
@@ -215,18 +291,6 @@
       </div>
     </section>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
 
   </body>
 
