@@ -337,8 +337,27 @@ header.masthead {
   font-weight: 700;
   text-transform: uppercase;
   border: none;
-  border-radius: 300px;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; 
+  margin-bottom: 2px;
+}
 
 .btn-xl {
-  padding: 15px 30px; }
+  padding: 15px 30px; 
+  height: 50px;
+}
+
+.email {
+  padding: 10px 10px; 
+  font-weight: 500;
+  height: 50px;
+  border:none;
+}
+
+.email:focus{
+    outline: none !important;
+    box-shadow: 0 0 10px #F05F40;
+}  
+
+.center-vertically {
+  vertical-align: middle;
+}
