@@ -26,11 +26,90 @@
 
 
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <script>
 
+        function Lesson(title, content) {
+          this.title = title;
+          this.content = content;
+        }
+
+        function setContent(language) {
+            var engLanguage = language === "en";
+            var title = engLanguage ? "Learn Android" : "Изучение Андроида";
+            $("title").text(title);
+            $("#nav-header").text(title);
+
+            $("#nav-lessons").text(engLanguage ? "Lessons" : "Уроки");
+            $("#nav-contact").text(engLanguage ? "Contacts" : "Контакты");
+            $("#homeHeading").text(engLanguage ? "Learn Android from scratch creating twitter client" 
+                                                : "Изучаем андроид с нуля, создавая twitter клиент");
+            $("#courses-overview").text(engLanguage ? "Register for courses right now. This part is absolutely free. After finishing them you will be able to write client for popular api like vk, facebook, instagram." : 
+                                                            "Зарегистрируйтесь прямо сейчас. Этот курс абсолютно бесплатен. После его завершения вы сможете создавать клиенты для популярных сетей, как vk, facebook, instagram");
+
+            $("#email-input").attr("placeholder", engLanguage ? "Enter your email" : "Введите свой email");
+            $("#email-submit").attr("value", engLanguage ? "Register" : "Подтвердить");
+
+            var lessons_languages = {
+                "en": [
+                        new Lesson("Lesson 1", "Installing Android Studio. Building Hello world"),
+                        new Lesson("Lesson 2", "Project Structure. Activity, AndroidManifest"),
+                        new Lesson("Lesson 3", "Project Structure. Activity, AndroidManifest"),
+                        new Lesson("Lesson 4", "Project Structure. Activity, AndroidManifest"),
+                        new Lesson("Lesson 5", "Project Structure. Activity, AndroidManifest")
+                ],
+                "ru": [
+                        new Lesson("Урок 1", "Установка Android Studio. Создание Hello world."),
+                        new Lesson("Урок 2", "Структура проекта.Activity, AndroidManifest."),
+                        new Lesson("Урок 3", "Структура проекта.Activity, AndroidManifest."),
+                        new Lesson("Урок 4", "Структура проекта.Activity, AndroidManifest."),
+                        new Lesson("Урок 5", "Структура проекта.Activity, AndroidManifest.")
+                ]
+              };
+
+            var rowLessonsCount = 4
+            var lessons = lessons_languages[language]    
+            var lessonsHtml="";
+            var rowWasOpened = false;
+            
+            for (var i = 0; i < lessons.length; i++) {
+
+              var lesson = lessons[i]
+              
+              var needOpenRow =  i % rowLessonsCount == 0 && !rowWasOpened;
+              var needCloseRow = i % rowLessonsCount == 0 && rowWasOpened;
+
+              if(needOpenRow) {
+                rowWasOpened = true;
+                lessonsHtml += '<div class="row">'; 
+                console.log("add row before " + lesson.title);
+              }
+
+              lessonsHtml += '<div class="col-lg-3 col-md-6 text-center">' +
+                      '<div class="service-box">' +
+                        '<h3>' + lesson.title+ '</h3>' +
+                        '<p class="text-muted">'+lesson.content+'</p>' +
+                      '</div>'+
+                    '</div>'; 
+
+              
+              if(needCloseRow) {
+                lessonsHtml += '</div>'
+                console.log("add row after " + lesson.title) 
+              }
+
+            }
+            
+            $("#lessons-container").append(lessonsHtml);
+
+        }
+
         //update this with your $form selector
-        $( window ).load(function() {
+        $(window).load(function() {
+          setContent("ru")
+
+
           var form_id = "email_form";
 
           var data = {
@@ -82,17 +161,17 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Learn Android</a>
+        <a id="nav-header" class="navbar-brand js-scroll-trigger" href="#page-top">Learn Android</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#lessons">Lessons</a>
+              <a id="nav-lessons" class="nav-link js-scroll-trigger" href="#lessons">Lessons</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a id="nav-contact" class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -104,15 +183,14 @@
         <div class="header-content-inner">
           <h1 id="homeHeading">Learn Android from scratch creating twitter client</h1>
           <hr>
-          <p>Start learning android practising. Minimum theory maximum practise skills. Register for courses right now.
-              This part is absolutely free. After finishing them you will be able to write client for popular api like 
+          <p id="courses-overview">Start learning android practising. Minimum theory maximum practise skills. Register for courses right now. This part is absolutely free. After finishing them you will be able to write client for popular api like 
               vk, facebook, instagram.
           </p>
           <div>
             <form id="email_form">
                 <div class="center-vertically">
-                  <input type="text" class="email" name="clientEmail" placeholder="Enter your email" />
-                  <input type="submit" class="btn btn-primary btn-xl" name="send" value="Register" />
+                  <input id="email-input" type="text" class="email" name="clientEmail" placeholder="Enter your email" />
+                  <input id="email-submit" type="submit" class="btn btn-primary btn-xl" name="send" value="Register" />
                 </div>
             </form>
           </div>
@@ -129,9 +207,8 @@
           </div>
         </div>
       </div>
-      <div class="container">
+      <div id="lessons-container" class="container">
         <div class="row">
-          
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
               <h3>Lesson 1</h3>
@@ -276,8 +353,6 @@
     
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     
   </body>
 
