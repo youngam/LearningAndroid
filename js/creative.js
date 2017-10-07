@@ -1,3 +1,5 @@
+const SERVER_URL = "http://localhost:90";
+
 (function($) {
   "use strict"; // Start of use strict
 
@@ -110,13 +112,9 @@ setContent("ru")
 
 var form_id = "email_form";
 
-var data = {
-    "access_token": "zez130jpn7v62gpfwbyqz6se" // sent after you sign up
-};
-
-function onSuccess() {
+function onSuccess(data) {
     // remove this to avoid redirect
-    console.log("onSuccess");
+    console.log("onSuccess " + JSON.stringify(data));
     sendButton.prop('disabled',false);
 }
 
@@ -131,13 +129,14 @@ var sendButton = $("#" + form_id + " [name='send']");
 function send() {
     sendButton.prop('disabled',true);
 
-    var subject = "PractiseAndroid new client";
     var message = $("#" + form_id + " [name='clientEmail']").val();
-    data['subject'] = subject;
-    data['text'] = message;
+    var data = {
+        "email" : message
+    };
 
-    $.post('https://postmail.invotes.com/send',
-        data,
+    console.log("Sent " + JSON.stringify(data));
+    $.post(SERVER_URL,
+        JSON.stringify(data),
         onSuccess
     ).fail(onError);
 
