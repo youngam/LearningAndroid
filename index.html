@@ -50,21 +50,42 @@
 
             $("#email-input").attr("placeholder", engLanguage ? "Enter your email" : "Введите свой email");
             $("#email-submit").attr("value", engLanguage ? "Register" : "Подтвердить");
+            $("#lessons-program").text(engLanguage ? "Lessons Program" : "Программа уроков");
 
             var lessons_languages = {
                 "en": [
                         new Lesson("Lesson 1", "Installing Android Studio. Building Hello world"),
                         new Lesson("Lesson 2", "Project Structure. Activity, AndroidManifest"),
-                        new Lesson("Lesson 3", "Project Structure. Activity, AndroidManifest"),
-                        new Lesson("Lesson 4", "Project Structure. Activity, AndroidManifest"),
-                        new Lesson("Lesson 5", "Project Structure. Activity, AndroidManifest")
+                        new Lesson("Lesson 3", "Layot types: Linear, Relative, Frame layout"),
+                        new Lesson("Lesson 4", "Views: Button, TextView, EditText. Access views from Java code."),
+                        new Lesson("Lesson 5", "Practise. Create Twitter User Info screen"),
+                        new Lesson("Lesson 6", "RecyclerView: principle of working. Adapter pattern"),
+                        new Lesson("Lesson 7", "Practise. Add tweets RecyclerView with objects stubs"),
+                        new Lesson("Lesson 8", "Practise. Navigation between activities, create tweet details screen."),
+                        new Lesson("Lesson 9", "Asynctask. What is Thread? Why can't do all work in one thread?"),
+                        new Lesson("Lesson 10", "Practise. Add auth logic using twitter-kit library"),
+                        new Lesson("Lesson 11", "Http. How to do GET, POST requests. Read response, convert to String."),
+                        new Lesson("Lesson 12", "JSON format. Convert string to JsonObject, parse it to POJO objects"),
+                        new Lesson("Lesson 13", "Practise. add httpRequest for reading UserInfo. Replace stub responses with real reponses"),
+                        new Lesson("Lesson 14", "Practise. add httpRequest for reading User Tweets. Replace stub responses with real  reponses"),
+                        new Lesson("Lesson 15", "Handling Exceptions: show error msg to User."),
                 ],
                 "ru": [
                         new Lesson("Урок 1", "Установка Android Studio. Создание Hello world."),
                         new Lesson("Урок 2", "Структура проекта.Activity, AndroidManifest."),
-                        new Lesson("Урок 3", "Структура проекта.Activity, AndroidManifest."),
-                        new Lesson("Урок 4", "Структура проекта.Activity, AndroidManifest."),
-                        new Lesson("Урок 5", "Структура проекта.Activity, AndroidManifest.")
+                        new Lesson("Урок 3", "Типы Layout: Linear, Relative, Frame"),
+                        new Lesson("Урок 4", "Views: Button, TextView, EditText. Доступ к  views из Java кода."),
+                        new Lesson("Урок 5", "Практика. Создание экрана информации о пользователе."),
+                        new Lesson("Урок 6", "RecyclerView. Принцип работы. Adapter паттерн"),
+                        new Lesson("Урок 7", "Практика. Добавление твитов в RecyclerView используя заглушки объектов"),
+                        new Lesson("Урок 8", "Практика. Навигация между Активити, создание детального экрана твита."),
+                        new Lesson("Урок 9", "Asynctask. Что такое Thread? Почему нельзя всё сделать в одном Thread?"),
+                        new Lesson("Урок 10", "Практика. Добавление логики авторизация используя twitter-kit библиотеку"),
+                        new Lesson("Урок 11", "Http. Как сделать GET, POST запросы. Считывание ответа, преобразование к строке."),
+                        new Lesson("Урок 12", "Формат обмена данными JSON. Преобразование строки к формату JsonObject, к обычному Java объекту"),
+                        new Lesson("Урок 13", "Практика. Добавление http запросов для считывания информации о пользователе"),
+                        new Lesson("Урок 14", "Практика. Добавление http запросов для считывания твитов пользователя."),
+                        new Lesson("Урок 15", "Обработка ощибок. Показ сообщения об ошибке пользователю."),
                 ]
               };
 
@@ -73,12 +94,15 @@
             var lessonsHtml="";
             var rowWasOpened = false;
             
+
+            $("#lessons-container").empty()
+
             for (var i = 0; i < lessons.length; i++) {
 
               var lesson = lessons[i]
               
-              var needOpenRow =  i % rowLessonsCount == 0 && !rowWasOpened;
-              var needCloseRow = i % rowLessonsCount == 0 && rowWasOpened;
+              var needOpenRow =  (i + 1) % rowLessonsCount == 1 && !rowWasOpened;
+              var needCloseRow = (i + 1) % rowLessonsCount == 0 && rowWasOpened;
 
               if(needOpenRow) {
                 rowWasOpened = true;
@@ -95,6 +119,7 @@
 
               
               if(needCloseRow) {
+                rowWasOpened = false;
                 lessonsHtml += '</div>'
                 console.log("add row after " + lesson.title) 
               }
@@ -103,7 +128,7 @@
             
             $("#lessons-container").append(lessonsHtml);
 
-        }
+        }  
 
         //update this with your $form selector
         $(window).load(function() {
@@ -202,129 +227,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Lessons Program</h2>
+            <h2 id="lessons-program" class="section-heading">Lessons Program</h2>
             <hr class="primary">
           </div>
         </div>
       </div>
       <div id="lessons-container" class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 1</h3>
-              <p class="text-muted">Installing Android Studio. Building "Hello world"</p>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 2</h3>
-              <p class="text-muted">Project Structure. Activity, AndroidManifest</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 3</h3>
-              <p class="text-muted">Layot types: Linear, Relative, Frame layout</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 4</h3>
-              <p class="text-muted">Views: Button, TextView, EditText. Access views from Java code.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 5</h3>
-              <p class="text-muted">Practise: create Twitter User Info screen</p>
-            </div>
-          </div>
-          
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 6</h3>
-              <p class="text-muted">RecyclerView: principle of working. Adapter pattern.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 7</h3>
-              <p class="text-muted">Practise: add tweets RecyclerView with objects stubs.</p>
-            </div>
-          </div>          
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 8</h3>
-              <p class="text-muted">Practise: Navigation between activities, create tweet details screen.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 9</h3>
-              <p class="text-muted">Asynctask. What is Thread? Why can't do all work in one thread?</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 10</h3>
-              <p class="text-muted">Practise: add auth logic using twitter-kit library</p>
-            </div>
-          </div>          
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 11</h3>
-              <p class="text-muted">HttpUrlConnection: how to do GET, POST requests. Read response, convert to String.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 12</h3>
-              <p class="text-muted">JsonObject: convert string to JsonObject, parse it to POJO objects</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 13</h3>
-              <p class="text-muted">Practise: add httpRequest for reading UserInfo. Replace stub responses with real reponses</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 14</h3>
-              <p class="text-muted">Practise: add httpRequest for reading User Tweets. Replace stub responses with real reponses</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box">
-              <h3>Lesson 15</h3>
-              <p class="text-muted">Handling Exceptions: show error msg to User.</p>
-            </div>
-          </div>          
-        </div>                   
+      <!-- LM_ALL: CONTENT IS ADDING DYNAMICALLY -->
+                
 
       </div>
     </section>
