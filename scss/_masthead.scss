@@ -55,6 +55,18 @@ header.masthead {
           margin-right: auto;
           margin-left: auto;
         }
+
+        .email {
+          padding: 10px 10px; 
+          font-weight: 500;
+          height: 50px;
+          border:none;
+          
+          &:focus {
+            outline: none !important;
+            box-shadow: 0 0 10px #F05F40;
+          }
+        }
       }
     }
   }

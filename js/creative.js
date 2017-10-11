@@ -20,7 +20,7 @@ const SERVER_URL = "http://localhost:90";
     $("#homeHeading").text(engLanguage ? "Learn Android from scratch creating twitter client" 
                                         : "Изучаем андроид с нуля, создавая twitter клиент");
     $("#courses-overview").text(engLanguage ? "Register for courses right now. This part is absolutely free. After finishing them you will be able to write client for popular api like vk, facebook, instagram." : 
-                                                    "Зарегистрируйтесь прямо сейчас. Этот курс абсолютно бесплатен. После его завершения вы сможете создавать клиенты для популярных сетей, как vk, facebook, instagram");
+                                                    "Зарегистрируйтесь прямо сейчас. Этот курс абсолютно бесплатный. После его завершения вы сможете создавать клиенты для таких популярных сетей как vk, facebook, instagram.");
 
     $("#email-input").attr("placeholder", engLanguage ? "Enter your email" : "Введите свой email");
     $("#email-submit").attr("value", engLanguage ? "Register" : "Подтвердить");
