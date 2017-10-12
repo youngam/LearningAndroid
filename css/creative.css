@@ -6,37 +6,56 @@
 /* Footer styles */
 .footer {
   padding: 20px;
-  border-top: 2px solid rgba(0, 0, 0, 0.1); }
-  .footer .social-icons li {
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px; }
-  .footer .social-icons .fa {
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: #FFF;
-    border-radius: 50%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
-    .footer .social-icons .fa:hover, .footer .social-icons .fa:active {
-      -webkit-box-shadow: 1px 1px 3px #333;
-      -moz-box-shadow: 1px 1px 3px #333;
-      box-shadow: 1px 1px 3px #333;
-      -webkit-transform: scale(1.1) rotate(360deg);
-      -moz-transform: scale(1.1) rotate(360deg);
-      -ms-transform: scale(1.1) rotate(360deg);
-      -o-transform: scale(1.1) rotate(360deg);
-      transform: scale(1.1) rotate(360deg); }
-  .footer .social-icons .fa-facebook {
-    background-color: #3B5998; }
-  .footer .social-icons .fa-vk {
-    background-color: #375474; }
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  max-height: 5rem;
+  font-family: 'Open Sans', sans-serif; }
+  .footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .footer .container li {
+      display: inline-block; }
+    .footer .container .footer__copyrights {
+      flex: 1 1 70%;
+      font-size: .8rem;
+      color: rgba(0, 0, 0, 0.6); }
+      .footer .container .footer__copyrights li:first-of-type {
+        padding-right: 5px; }
+      .footer .container .footer__copyrights li:last-of-type {
+        padding-left: 10px; }
+    .footer .container .social-icons {
+      flex: 1 0 30%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+      .footer .container .social-icons li {
+        padding: 0 5px; }
+      .footer .container .social-icons .fa {
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #FFF;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out; }
+        .footer .container .social-icons .fa:hover, .footer .container .social-icons .fa:active {
+          -webkit-box-shadow: 1px 1px 3px #333;
+          -moz-box-shadow: 1px 1px 3px #333;
+          box-shadow: 1px 1px 3px #333;
+          -webkit-transform: scale(1.1) rotate(360deg);
+          -moz-transform: scale(1.1) rotate(360deg);
+          -ms-transform: scale(1.1) rotate(360deg);
+          -o-transform: scale(1.1) rotate(360deg);
+          transform: scale(1.1) rotate(360deg); }
+      .footer .container .social-icons .fa-facebook {
+        background-color: #3B5998; }
+      .footer .container .social-icons .fa-vk {
+        background-color: #375474; }
 
 body,
 html {
@@ -47,9 +66,10 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
 
 hr {
-  max-width: 50px;
+  max-width: 280px;
   border-width: 3px;
-  border-color: #F05F40; }
+  border-color: #F05F40;
+  margin-bottom: 3rem; }
 
 hr.light {
   border-color: white; }
@@ -71,7 +91,7 @@ h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
 
 p {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   margin-bottom: 20px; }
 
@@ -86,7 +106,8 @@ p {
   color: rgba(255, 255, 255, 0.7); }
 
 section {
-  padding: 100px 0; }
+  padding: 80px 0;
+  background-color: #f7f7f7; }
 
 .section-heading {
   margin-top: 0; }
@@ -197,7 +218,7 @@ header.masthead {
       font-size: 30px;
       font-weight: 700;
       margin-top: 0;
-      margin-bottom: 0;
+      margin-bottom: 30px;
       text-transform: uppercase; }
     header.masthead .header-content .header-content-inner hr {
       margin: 30px auto; }
@@ -236,64 +257,6 @@ header.masthead {
             header.masthead .header-content .header-content-inner .email:focus {
               outline: none !important;
               box-shadow: 0 0 10px #F05F40; } }
-
-.service-box {
-  max-width: 400px;
-  margin: 50px auto 0; }
-  @media (min-width: 992px) {
-    .service-box {
-      margin: 20px auto 0; } }
-  .service-box p {
-    margin-bottom: 0; }
-
-.portfolio-box {
-  position: relative;
-  display: block;
-  max-width: 650px;
-  margin: 0 auto; }
-  .portfolio-box .portfolio-box-caption {
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    opacity: 0;
-    color: white;
-    background: rgba(240, 95, 64, 0.9);
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s; }
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-      text-align: center; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-        padding: 0 15px;
-        font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase; }
-      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-        font-size: 18px; }
-  .portfolio-box:hover .portfolio-box-caption {
-    opacity: 1; }
-  .portfolio-box:focus {
-    outline: none; }
-  @media (min-width: 768px) {
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
-      font-size: 16px; }
-    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
-      font-size: 22px; } }
-
-.call-to-action {
-  padding: 50px 0; }
-  .call-to-action h2 {
-    margin: 0 auto 20px; }
 
 .text-primary {
   color: #F05F40 !important; }
