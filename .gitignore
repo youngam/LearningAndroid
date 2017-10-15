@@ -4,3 +4,7 @@ bower_components
 # Ignore docs files
 .sass-cache
 .sass-cache/*
+
+# Ignore generated files
+scss/creative.css
+scss/creative.css.map
