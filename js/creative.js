@@ -25,6 +25,7 @@ const SERVER_URL = "http://localhost:90";
     $("#email-input").attr("placeholder", engLanguage ? "Enter your email" : "Введите свой email");
     $("#email-submit").attr("value", engLanguage ? "Register" : "Подтвердить");
     $("#lessons-program").text(engLanguage ? "Lessons Program" : "Программа уроков");
+    $("#video-title").text(engLanguage ? "Courses results" : "Результат курсов");
 
     var lessons_languages = {
         "en": [
